@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Festivales de México</title>
+    <link rel="stylesheet" href="css/estilos.css">
+</head>
+<body>
+
+  <!-- CABECERA -->
+  <header>
+    <div class="logo">
+        <img src="images/icono.png" alt="Logo México" title="Logo México">
+    </div>
+
+    <!-- Botón menú responsive -->
+    <div class="menu-toggle">☰</div>
+
+    <nav class="nav-menu">
+        <ul>
+            <li><a href="#">Calendario festivales</a></li>
+            <li><a href="#">Blog</a></li>
+            <li><a href="#">Galería</a></li>
+            <li><a href="#">Información práctica</a></li>
+        </ul>
+    </nav>
+  </header>
+
+  <!-- HERO -->
+  <section class="banner">
+      <div class="contenido-banner">
+          <h1 id="mensajeBienvenida"></h1>
+          <h2 style="text-align: center;">Vive la cultura, la música, el arte y la tradición</h2>
+      </div>
+  </section>
+
+  <!-- CALENDARIO -->
+  <section class="calendario">
+    <div class="tarjetas">
+
+      <div class="tarjeta">
+        <img src="images/imagen 1.jpg" alt="FCIM">
+        <h3>FCIM</h3>
+        <a href="#" class="btn">Más Información</a>
+      </div>
+
+      <div class="tarjeta">
+        <img src="images/Dia de muertos.jpg" alt="Día de Muertos">
+        <h3>Día de Muertos</h3>
+        <a href="#" class="btn">Más Información</a>
+      </div>
+
+      <div class="tarjeta">
+        <img src="images/Carnabal veracruz.jpg" alt="Carnaval de Veracruz">
+        <h3>Carnaval de Veracruz</h3>
+        <a href="#" class="btn">Más Información</a>
+      </div>
+
+      <div class="tarjeta">
+        <img src="images/FCG.jpg" alt="FCG">
+        <h3>FCG</h3>
+        <a href="#" class="btn">Más Información</a>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- SLIDER DE IMÁGENES (MULTIMEDIA DINÁMICO) -->
+  <section class="multimedia">
+      <h2 style="text-align:center;">Galería dinámica</h2>
+      <div class="slider">
+          <div class="slides">
+              <img src="images/images (2).jpg" alt="Imagen 1">
+              <img src="images/images (1).jpg" alt="Imagen 2">
+              <img src="images/descarga (2).jpg" alt="Imagen 3">
+              <img src="images/descarga (13).jpg" alt="Imagen 4">
+          </div>
+      </div>
+  </section>
+
+  <!-- BLOG -->
+  <section class="blog">
+    <h2>Blog</h2>
+    <div class="blog-contenido">
+      <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Eius tempora impedit voluptas...</p>
+      <a href="#" class="btn">Leer más sobre el festival</a>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="enlaces-rapidos">
+      <h3>Enlaces Rápidos</h3>
+      <ul>
+        <li><a href="#">Calendario festivales</a></li>
+        <li><a href="#">Galería</a></li>
+        <li><a href="#">Contacto</a></li>
+      </ul>
+    </div>
+
+    <div class="redes-sociales">
+      <h3>Redes Sociales</h3>
+      <ul>
+        <li><a href="#"><img src="images/logo facebook.png" alt=""></a>Facebook</li>
+        <li><a href="#"><img src="images/logo instagram.jpg" alt=""></a>Instagram</li>
+        <li><a href="#"><img src="images/logo youtube.png" alt=""></a>Youtube</li>
+      </ul>
+    </div>
+
+    <div class="contacto">
+      <h3>Contacto</h3>
+      <p>Email: info@festivalesmexico.com</p>
+      <p>Teléfono: +51 315 387 9415</p>
+    </div>
+  </footer>
+<!-- JAVASCRIPT DINÁMICO -->
+  <script>
+
+    // -------- MENÚ RESPONSIVE --------
+    document.addEventListener("DOMContentLoaded", () => {
+        const menuToggle = document.querySelector(".menu-toggle");
+        const navMenu = document.querySelector(".nav-menu");
+
+        menuToggle.addEventListener("click", () => {
+            navMenu.classList.toggle("active");
+        });
+    });
+
+
+    // -------- SLIDER AUTOMÁTICO --------
+    let index = 0;
+    function moverSlider() {
+        const slides = document.querySelector(".slides");
+        const total = slides.children.length;
+        index = (index + 1) % total;
+        slides.style.transform = `translateX(-${index * 100}%)`;
+    }
+    setInterval(moverSlider, 3000);
+
+
+    // -------- MENSAJE PERSONALIZADO SEGÚN IDIOMA --------
+    const mensajes = {
+        "es": "Descubre los mejores festivales de México",
+        "en": "Discover the best festivals in Mexico",
+        "fr": "Découvrez les meilleurs festivals du Mexique",
+        "pt": "Descubra os melhores festivais do México"
+    };
+
+    const idiomaNavegador = navigator.language.substring(0, 2);
+    document.getElementById("mensajeBienvenida").textContent =
+        mensajes[idiomaNavegador] || mensajes["es"];
+
+
+    // -------- ADAPTACIÓN CULTURAL EN NAVEGACIÓN --------
+    if (idiomaNavegador === "en") {
+        document.querySelector(".nav-menu ul").innerHTML = `
+            <li><a href="#">Festival Calendar</a></li>
+            <li><a href="#">Blog</a></li>
+            <li><a href="#">Gallery</a></li>
+            <li><a href="#">Practical Info</a></li>
+        `;
+    }
+  </script>
+</body>
+</html>
